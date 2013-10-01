@@ -9,13 +9,14 @@ The real power of Java EE is add feature easily without boiler code like
 - Log the input and output of calls with interceptors
 - And many others
 
+```
 @RolesAllowed({"Employee", "Manager"})
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Interceptors(ItemBidInterceptor.class)
 public void add(AuctionItem item) {
     dao.create(item);
 }
-
+```
 This can now be tested with
 
 @RunWith(Arquillian.class)

@@ -45,13 +45,13 @@ public class TestDAO {
    @Test
     public void testCreate() {
         String name = "testcustomer" + System.currentTimeMillis();
-        dao.create(new AuctionItem(name));
+        dao.create(new AuctionItem(name,1));
     }
 
     @Test
     public void edit() {
         String name = "testcustomer" + System.currentTimeMillis();
-        AuctionItem databaseCustomer = dao.create(new AuctionItem(name));
+        AuctionItem databaseCustomer = dao.create(new AuctionItem(name,1));
 
         databaseCustomer.setName(name + name);
     }
@@ -60,7 +60,7 @@ public class TestDAO {
     public void remove() {
         String name = "testcustomer" + System.currentTimeMillis();
         int initialCount = dao.count(AuctionItem.class);
-        AuctionItem databaseCustomer = dao.create(new AuctionItem(name));
+        AuctionItem databaseCustomer = dao.create(new AuctionItem(name,1));
         int afterCreateCount = dao.count(AuctionItem.class);
         dao.delete(AuctionItem.class,databaseCustomer.getId());
         int afterRemove = dao.count(AuctionItem.class);
@@ -72,7 +72,7 @@ public class TestDAO {
     @Test
     public void testFind() {
         String name = "testcustomer" + System.currentTimeMillis();
-        AuctionItem databaseCustomer = dao.create(new AuctionItem(name));
+        AuctionItem databaseCustomer = dao.create(new AuctionItem(name,1));
         Assert.assertNotNull(dao.find(AuctionItem.class,databaseCustomer.getId()));
     }
     @Test
